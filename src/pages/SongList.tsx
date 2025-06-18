@@ -26,6 +26,7 @@ import SongForm from "../components/SongForm";
 import { EditSongForm } from "../components/EditSongForm";
 import FilterButtons from "../components/FilterButtons";
 import { saveToLocalStorage, loadFromLocalStorage } from "../utils/localStorage";
+import { initialSongs } from "../data/initialSongs";
 
 const LOCAL_STORAGE_KEY = "songs";
 
@@ -56,10 +57,6 @@ function SongList() {
     const existingSongs = loadFromLocalStorage(LOCAL_STORAGE_KEY);
 
     if (!Array.isArray(existingSongs) || existingSongs.length === 0) {
-      const initialSongs = [
-        { id: 1, title: "Imagine", artist: "John Lennon", listened: true },
-        { id: 2, title: "Bohemian Rhapsody", artist: "Queen", listened: false },
-      ];
       setSongs(initialSongs);
       saveToLocalStorage(LOCAL_STORAGE_KEY, initialSongs);
     } else {
